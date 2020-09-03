@@ -1,0 +1,25 @@
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+
+const config = {
+  apiKey: "AIzaSyCkMF1cZ8dbeKq64Yt-Lg_98IRHG353vP8",
+  authDomain: "e-clothing-db-6cced.firebaseapp.com",
+  databaseURL: "https://e-clothing-db-6cced.firebaseio.com",
+  projectId: "e-clothing-db-6cced",
+  storageBucket: "e-clothing-db-6cced.appspot.com",
+  messagingSenderId: "629107593965",
+  appId: "1:629107593965:web:19a4b2ba9e67c9607df2e4",
+  measurementId: "G-VXD61HYCNY",
+};
+
+firebase.initializeApp(config);
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+export default firebase;
